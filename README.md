@@ -1,2 +1,2 @@
 # PHP-PrivatBank
-all
+
