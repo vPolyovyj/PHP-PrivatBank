@@ -1,5 +1,8 @@
 <?php
 
+/** 
+* @desc клас для розбору та генерації XML
+*/
 class pbXml
 {
 	private static $errors = array(
