@@ -1,11 +1,16 @@
 <?php
 
+/** 
+* @desc клас, який реалізує набір допоміжних
+* функцій для роботи з PrivatBank Debt API
+*/
+
 class pbLib
 {
 	/**
-	* get unique reference from data array
-	* @param array $data array generated from xml string
-	* @return int $refrence
+	* @desc знаходить ідентифікатор платежу в розібраному XML запиті
+	* @param array $data array розібрана XML стрічка
+	* @return int $reference
 	*
 	*/
 	public static function getCheckRef($data)
@@ -14,8 +19,8 @@ class pbLib
 	}
 
 	/**
-	* check whether a XML string has type ErrorInfo
-	* @param array $data array generated from xml string
+	* @desc перевірка чи XML стрічка має тип ErrorInfo
+	* @param array $data array розібрана XML стрічка
 	* @return bool $res
 	*
 	*/
