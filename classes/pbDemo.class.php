@@ -1,5 +1,10 @@
 <?php
 
+/** 
+* @desc демонстраційний клас, який імплементує та реалізує
+* інтерфейс для роботи з PrivatBank Debt API
+*/
+
 require_once 'pb.class.php';
 
 class pbDemo implements pb
