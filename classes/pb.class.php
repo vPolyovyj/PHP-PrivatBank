@@ -1,25 +1,25 @@
 <?php
 
 /** 
-* @desc base class (interface), which describes a set of functions required for payment through the PrivatBank Debt API
-*
+* @desc базовий клас (інтерфейс), який описує множину функцій,
+* які вимагаються для проведення платежів через PrivatBank Debt API
 */
 interface pb
 {
 	/**
-	* @desc Select payer from billing DB by personal number
-	* @param string $num payer's personal number
-	* @return array $result 
-	* array must have the next structure:
+	* @desc пошук платника за особовим рахунком
+	* @param string $num особовий рахунок платника
+	* @return array $result дані платника
+	* результуючий масив повнен мати таку структуру:
 	*	array('name' => '...', 'num' => '...', 'phone' => '...', address => '...')
 	*/
 	public function getPayerByNum($num);
 
 	/**
-	* @desc Select payers from billing DB by similarity to personal number
-	* @param string $num payer's personal number
-	* @return array $result
-	* array must have the next structure:
+	* @desc пошук платників зі схожим особовим номером
+	* @param string $num особовий номер
+	* @return array $result перелік платників
+	* результуючий масив повнен мати таку структуру:
 	*	array(0 =>
 	*		array('name' => '...', 'num' => '...', 'phone' => '...', address => '...'),
 	*		...
@@ -28,10 +28,10 @@ interface pb
 	public function selectPayersByNum($num);
 
 	/**
-	* @desc Select payers from billing DB by his address
-	* @param array $adderss payer's address: array('street' => '...', 'house' =>  '...[/...]', 'flat' => '...')
-	* @return array $result
-	* array must have the next structure:
+	* @desc Пошук платників за адресою
+	* @param array $adderss адреса: array('street' => '...', 'house' =>  '...[/...]', 'flat' => '...')
+	* @return array $result перелік платників
+	* результуючий масив повнен мати таку структуру:
 	*	array(0 =>
 	*		array('name' => '...', 'num' => '...', 'phone' => '...', address => '...'),
 	*		...
@@ -40,29 +40,29 @@ interface pb
 	public function selectPayersByAddr($queryAddr);
 
 	/**
-	* @desc Select company from billing DB by service code (The payer must know which company he pays and what service)
-	* @param int $serviceCode service's unique id
-	* @return array $company 
-	* array must have the next structure:
+	* @desc пошук компанії(провайдер) за кодом послуги
+	* @param int $serviceCode id послуги
+	* @return array $company дані компанії(провайдера)
+	* результуючий масив повнен мати таку структуру:
 	*	array('name' => '...', 'okpo' => '...', 'mfo' => '...', account => '...')
 	*/
 	public function getCompanyByService($serviceCode);
 
 	/**
-	* @desc Select payer's address from billing DB by payer id
-	* @param int $payerId payer's unique id
-	* @return array $address 
-	* array must have the next structure:
+	* @desc пошук адреси платника за id
+	* @param int $payerId id платника
+	* @return array $address адреса платника
+	* результуючий масив повнен мати таку структуру:
 	*	array('name' => '...')
 	*/
 	public function getPayerAddress($payerId);
 
 	/**
-	* @desc select payer's debt from billing DB
-	* @param int $payerId payer's unique id
-	* @param int $serviceCode service's unique id
-	* @return array $result 
-	* array must have the next structure:
+	* @desc інформація про стан розрахунків платника
+	* @param int $payerId id платника 
+	* @param int $serviceCode id послуги
+	* @return array $result розрахунки платника
+	* результуючий масив повнен мати таку структуру:
 	* array(0 =>
 	*	array('service_id' => '...', 'payer_id' => '...', 'sum' => '...', 'company_id' => '...',
 	*		  'service_name' => '...', 'service_price' => '...'),
@@ -72,14 +72,14 @@ interface pb
 	public function selectDebts($payerId, $serviceCode = '');
 
 	/**
-	* @desc generate unique reference for pay checking
-	* @return string $refrence 
+	* @desc генерування унікального ідентифікатора платежу (використовується у запитах XML)
+	* @return int $refrence 
 	*
 	*/
 	function generateCheckRef();
 
 	/**
-	* @desc insert payment to db
+	* @desc вставка платежу в БД
 	* @param int $payerNum
 	* @param double $sum
 	* @return bool $res 
@@ -88,7 +88,7 @@ interface pb
 	function insertPayment($payerNum, $sum);
 
 	/**
-	* @desc confirm payment after insert
+	* @desc підтвердження платежу
 	* @param string $ref
 	* @return bool $res 
 	*
@@ -96,7 +96,7 @@ interface pb
 	function confirmPayment($ref);
 
 	/**
-	* @desc cancel payment by bank request
+	* @desc скасування платежу відповідно до запиту банку
 	* @param string $ref
 	* @return bool $res 
 	*
