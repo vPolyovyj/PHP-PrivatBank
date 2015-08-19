@@ -263,7 +263,7 @@ class pbXml
 	public static function companyInfo($company)
 	{
 		$value  = self::tag('CompanyCode', $company['id']);
-		$value .= self::tag('CompanyName', $company['name']);
+//		$value .= self::tag('CompanyName', $company['name']);
 
 		$params = array();
 		if ($company['mfo'])
