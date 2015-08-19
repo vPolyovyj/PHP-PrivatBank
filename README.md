@@ -6,7 +6,7 @@
 
 ## Реалізовані методи взаємодії
 + [Presearch](https://github.com/vPolyovyj/PHP-PrivatBank/blob/master/actions/presearch.php) - попередіній пошук платника (за особовим рахунком або адресою)
-+ [Search](https://github.com/vPolyovyj/PHP-PrivatBank/blob/master/actions/search.php) - основний пошук палатника після поперднього (за особовим рахунком)
++ [Search](https://github.com/vPolyovyj/PHP-PrivatBank/blob/master/actions/search.php) - основний пошук палатника після попереднього (за особовим рахунком)
 + [Check](https://github.com/vPolyovyj/PHP-PrivatBank/blob/master/actions/check.php) - перевірка можливості вводу платежу
 + [Pay](https://github.com/vPolyovyj/PHP-PrivatBank/blob/master/actions/pay.php) - здійснення (підтвердження) платежу
 + [Cancel](https://github.com/vPolyovyj/PHP-PrivatBank/blob/master/actions/cancel.php) - скасування платежу
