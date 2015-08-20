@@ -15,7 +15,18 @@ class pbLib
 	*/
 	public static function getCheckRef($data)
 	{
-		return $data['Transfer']['Data']['ServiceGroup']['Service']['CompanyInfo']['CheckReference']['value'];
+		return $data['Transfer']['Data']['CompanyInfo']['CheckReference']['value'];
+	}
+
+	/**
+	* @desc знаходить ідентифікатор(наданий ПБ) платежу в розібраному XML запиті
+	* @param array $data array розібрана XML стрічка
+	* @return int $reference
+	*
+	*/
+	public static function getPayId($data)
+	{
+		return $data['Transfer']['Data']['attr']['id'];
 	}
 
 	/**

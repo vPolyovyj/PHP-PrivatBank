@@ -89,15 +89,16 @@ interface pb
 
 	/**
 	* @desc підтвердження платежу
-	* @param string $ref
+	* @param int $ref
+	* @param int $payId
 	* @return bool $res 
 	*
 	*/
-	function confirmPayment($ref);
+	function confirmPayment($ref, $payId = '');
 
 	/**
 	* @desc скасування платежу відповідно до запиту банку
-	* @param string $ref
+	* @param int $ref
 	* @return bool $res 
 	*
 	*/

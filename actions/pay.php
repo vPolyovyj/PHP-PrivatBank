@@ -1,14 +1,15 @@
 <?php
 
 	$ref = pbLib::getCheckRef($data);
-	if ($ref && $pbAdapter->confirmPayment($ref))
+	$payId = pbLib::getPayId($data);
+	if ($ref && $payId && $pbAdapter->confirmPayment($ref, $payId))
 	{
 		$pbXml = pbXml::data('', $schema, 'Gateway', $ref);
 	}
 
 	if (!$pbXml)
 	{
-		$pbXml = pbXml::error(99, 'ÐŸÐ¾Ð¼Ð¸Ð»ÐºÐ° Ð¿Ñ–Ð´Ñ‚Ð²ÐµÑ€Ð´Ð¶ÐµÐ½Ð½Ñ Ð¿Ð»Ð°Ñ‚ÐµÐ¶Ñƒ');
+		$pbXml = pbXml::error(99, 'Ïîìèëêà ï³äòâåðäæåííÿ ïëàòåæó');
 	}
 
 ?>
