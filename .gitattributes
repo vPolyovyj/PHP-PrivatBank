@@ -1,2 +1,4 @@
 linguist-language=PHP
-classes/*.php diff=cp1251-to-utf8
+/*.php encoding=cp1251
+*.php encoding=cp1251
+/classes/*.php encoding=cp1251
