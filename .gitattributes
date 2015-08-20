@@ -1,2 +1,2 @@
 linguist-language=PHP
-*.php encoding=cp1251
+/classes/*.php encoding=cp1251
