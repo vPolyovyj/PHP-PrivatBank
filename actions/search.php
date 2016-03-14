@@ -27,6 +27,11 @@
 		$currentPayer = $pbAdapter->getPayerByNum($billIdentifier);
 		if (!$currentPayer)
 		{
+			$currentPayer = $pbAdapter->getPayerByResource($billIdentifier);
+		}
+
+		if (!$currentPayer)
+		{
 			$pbXml = pbXml::error(2);
 			$isError = true;
 		}
@@ -34,7 +39,7 @@
 		{
 			$pbXml .= '<Message>Данні про заборгованість можна отримати в Касі!</Message>';
 //			$pbXml .= '<DopData>';
-//			$pbXml .= '<Dop name="доп данные" value="значение"/>';
+//			$pbXml .= '<Dop name="name" value="значение"/>';
 //			$pbXml .= '</DopData>';
 
 			$payerDebts = $pbAdapter->selectDebts($currentPayer['id'], $serviceCode);
@@ -42,7 +47,7 @@
 	}
 
 	if (!$isError)
-	{
+	{                                 	
 		$pbXml .=  pbXml::payerInfo($currentPayer, $currentPayer['num']);
 		$pbXml .= '<ServiceGroup>';
 
@@ -57,9 +62,9 @@
 			}
 
 			$pbXml .= '<DebtService' . $tariff . ' serviceCode="' . $debt['service_id'] . '">';
-//			$pbXml .= '<DopData>';
-//			$pbXml .= '<Dop name="fine" value="2.51"/>';
-//			$pbXml .= '</DopData>';
+			$pbXml .= '<DopData>';
+			$pbXml .= '<Dop name="login" value="' . $currentPayer['user_login'] . '"/>';
+			$pbXml .= '</DopData>';
 			$pbXml .=  pbXml::companyInfo($currentCompany);
 			$pbXml .=  pbXml::debtInfo($debt);
 //			$pbXml .= '<MeterData>';

@@ -19,6 +19,20 @@
 			$billPayers = $pbAdapter->selectPayersByNum($pn);
 		}				
 	}
+	if (isset($funit['name']) &&
+		$funit['name'] == 'login')
+	{
+		$resource = $funit['value'];
+		if (!$resource)
+		{
+			$pbXml = pbXml::error(99, 'Параметр "логін" 
+				є обов\'язковий');
+		}
+		else
+		{
+			$billPayers = $pbAdapter->selectPayersByResource($resource);
+		}				
+	}
 	else if ($funit['attr']['name'] == 'street')
 	{
 		$street = $units[0]['attr']['value'];
@@ -74,7 +88,7 @@
 	}
 	else if (!$pbXml)
 	{
-		$pbXml = pbXml::error(99, 'Перевірте параметри пошуку');
+		$pbXml = pbXml::error(2, 'Перевірте параметри пошуку');
 	}
 
 ?>

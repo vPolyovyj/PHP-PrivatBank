@@ -40,6 +40,27 @@ interface pb
 	public function selectPayersByAddr($queryAddr);
 
 	/**
+	* @desc пошук платника за ресурсом
+	* @param string $num особовий рахунок платника
+	* @return array $result дані платника
+	* результуючий масив повнен мати таку структуру:
+	*	array('name' => '...', 'num' => '...', 'phone' => '...', address => '...')
+	*/
+	public function getPayerByResource($resource);
+
+	/**
+	* @desc пошук платників зі схожим ресурсом
+	* @param string $num особовий номер
+	* @return array $result перелік платників
+	* результуючий масив повнен мати таку структуру:
+	*	array(0 =>
+	*		array('name' => '...', 'num' => '...', 'phone' => '...', address => '...'),
+	*		...
+	*	)
+	*/
+	public function selectPayersByResource($resource);
+
+	/**
 	* @desc пошук компанії(провайдер) за кодом послуги
 	* @param int $serviceCode id послуги
 	* @return array $company дані компанії(провайдера)
