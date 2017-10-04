@@ -289,7 +289,7 @@ class pbXml
 
 		$params = array();
 		$params['amountToPay'] = $debt['sum'];
-		$params['debt'] = $debt['sum'];
+		$params['debt']        = $debt['balance'];
 
 		return self::tag('DebtInfo', $value, $params);
 	}

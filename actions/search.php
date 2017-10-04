@@ -71,7 +71,7 @@
 //			$pbXml .= '<Meter previosValue="213" tarif="0.01" delta="2341234" name="Телекомунікаційні послуги"/>';
 //			$pbXml .= '</MeterData>';
 			$pbXml .= '<ServiceName>' . $debt['service_name'] . '</ServiceName>';
-			$pbXml .= '<Destination>Оплата за послугу "' . $debt['service_name'] . '"</Destination>';
+			$pbXml .= '<Destination>Оплата за послугу "' . $debt['service_name'] . '" від ' . $currentPayer['name'] . '</Destination>';
 			$pbXml .=  pbXml::payerInfo($currentPayer, $currentPayer['num'], $currentPayer['num']);
 			$pbXml .= '</DebtService>';
 		}
