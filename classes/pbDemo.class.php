@@ -52,14 +52,14 @@ class pbDemo implements pb
 	);
 
 	private $debts = array(
-		1 => array('id' => 1, 'service_id' => 1, 'payer_id' => 1, 'sum' => 200.00, 'company_id' => 1),
-		2 => array('id' => 2, 'service_id' => 1, 'payer_id' => 2, 'sum' => 100.00, 'company_id' => 1),
-		3 => array('id' => 3, 'service_id' => 1, 'payer_id' => 3, 'sum' => 100.00, 'company_id' => 1),
-		4 => array('id' => 4, 'service_id' => 2, 'payer_id' => 3, 'sum' => 250.00, 'company_id' => 1),
-		5 => array('id' => 5, 'service_id' => 2, 'payer_id' => 4, 'sum' => 300.00, 'company_id' => 1),
-		6 => array('id' => 6, 'service_id' => 1, 'payer_id' => 5, 'sum' => 0.00  , 'company_id' => 1),
-		7 => array('id' => 7, 'service_id' => 3, 'payer_id' => 6, 'sum' => 450.00, 'company_id' => 2),
-		8 => array('id' => 8, 'service_id' => 4, 'payer_id' => 6, 'sum' => 500.00, 'company_id' => 3)
+		1 => array('id' => 1, 'service_id' => 1, 'payer_id' => 1, 'sum' => 200.00, 'balance' => 100.00, 'company_id' => 1),
+		2 => array('id' => 2, 'service_id' => 1, 'payer_id' => 2, 'sum' => 100.00, 'balance' => 300.00, 'company_id' => 1),
+		3 => array('id' => 3, 'service_id' => 1, 'payer_id' => 3, 'sum' => 100.00, 'balance' => 100.00, 'company_id' => 1),
+		4 => array('id' => 4, 'service_id' => 2, 'payer_id' => 3, 'sum' => 250.00, 'balance' => 20.00, 'company_id' => 1),
+		5 => array('id' => 5, 'service_id' => 2, 'payer_id' => 4, 'sum' => 300.00, 'balance' => 50.00, 'company_id' => 1),
+		6 => array('id' => 6, 'service_id' => 1, 'payer_id' => 5, 'sum' => 0.00  , 'balance' => 30.00, 'company_id' => 1),
+		7 => array('id' => 7, 'service_id' => 3, 'payer_id' => 6, 'sum' => 450.00, 'balance' => 30.00, 'company_id' => 2),
+		8 => array('id' => 8, 'service_id' => 4, 'payer_id' => 6, 'sum' => 500.00, 'balance' => 21.00, 'company_id' => 3)
 	);
 
 	public function getPayerByNum($num)
@@ -155,7 +155,7 @@ class pbDemo implements pb
 
 			if ($debt['payer_id'] == $payerId)
 			{
-				$debt['charge'] 	   = 0.0;
+				$debt['charge']        = 0.0;
 				$debt['last_paying']   = 0.0;
 				$debt['service_name']  = $service['name'];
 				$debt['service_price'] = $service['price'];
