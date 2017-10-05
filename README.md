@@ -24,4 +24,4 @@
 
 # Demo проекту
 
-[...]()
+[SANDBOX](http://pb-sandbox.isp-service24.com/)
